@@ -20,9 +20,11 @@ class PlaylistsService {
     const PlaylistInformation = await this._pool.query(queryPlaylistInformation);
     const songs = await this._pool.query(queryPlaylistSongs);
     return {
-      id: PlaylistInformation.rows[0].id,
-      name: PlaylistInformation.rows[0].name,
-      songs: songs.rows,
+      playlist: {
+        id: PlaylistInformation.rows[0].id,
+        name: PlaylistInformation.rows[0].name,
+        songs: songs.rows,
+      },
     };
   }
 }
